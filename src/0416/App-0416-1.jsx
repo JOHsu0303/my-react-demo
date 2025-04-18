@@ -83,7 +83,7 @@ function App() {
                                                         <br />
                                                         {/* 天氣圖：使用執行路徑，所以要放在public資料夾中，才讀得到 */}
                                                         {/* <img src="/weathericon/晴時多雲.svg" alt="" /> */}
-                                                        <img src={`/weathericon/${item.parameter.parameterName}.svg`} alt="" />
+                                                        <img src={`./weathericon/${item.parameter.parameterName}.svg`} alt="" />
                                                         {/* 天氣名稱 */}
                                                         <div className="mt-2">
                                                             {/* 晴時多雲 */}
