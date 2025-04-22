@@ -1,12 +1,20 @@
 import { useState } from "react"
 
-function CreateForm() {
+function CreateForm({addTodo}) {
     // 建立input內容變數
     // const => 常數
     const [content, setContent] = useState('');
+    const handleSubmit=(e)=>{
+        // 取消網頁的預設行為，不然會抓不到資料
+        e.preventDefault();
+        // 增加todo內容
+        addTodo(content);
+        // 清空input輸入列的資料
+        setContent('');
+    }
 
     return (
-        <form className="create-from">
+        <form className="create-from" onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="輸入待辦事項"

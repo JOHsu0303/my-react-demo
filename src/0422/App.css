@@ -72,3 +72,8 @@ body{
 .todo p{
     margin: 0;
 }
+.completed{
+    opacity: .4;
+    text-decoration: line-through;
+    color: rgb(80, 100, 255);
+}
