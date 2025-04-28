@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="page1">我是page1</div>
     <div id="page2" style="display: none;">我是page2</div>
@@ -16,32 +18,34 @@
     <button id="btn4" onclick="changeToPage(1);" style="display:none;">第二步</button>
 
     <script>
-         function changeToPage(page) {
-            // 頁面隱藏
-            document.querySelector("#page1").style.display="none";
-            document.querySelector("#page2").style.display="none";
-            document.querySelector("#page3").style.display="none";
-
-            // 頁面顯示
-            if(page==0) document.querySelector("#page1").style.display="block";
-            if(page==1) document.querySelector("#page2").style.display="block";
-            if(page==2) document.querySelector("#page3").style.display="block";
-
-
-            // 按鈕隱藏
-            document.querySelector("#btn1").style.display="none";
-            document.querySelector("#btn2").style.display="none";
-            document.querySelector("#btn3").style.display="none";
-            document.querySelector("#btn4").style.display="none";
-
-            // 按鈕顯示
-            if(page==0) document.querySelector("#btn1").style.display="block";
-            if(page==1) {
-                document.querySelector("#btn2").style.display="block";
-                document.querySelector("#btn3").style.display="block";
+        function changeToPage(page) {
+            // 頁面
+            for (let i = 0; i < 3; i++) {
+                const pages = document.getElementById("page" + (i + 1));
+                if (i == page) {
+                    pages.style.display="block";
+                } else {
+                    pages.style.display="none";
+                }
             }
-            if(page==2) document.querySelector("#btn4").style.display="block";
+
+            // 按鈕
+            for (let i = 0; i < 4; i++) {
+                const btns = document.getElementById("btn" + (i + 1));
+                btns.style.display="none";
+            }
+
+        
+            if(page==0){
+                document.getElementById("btn1").style.display="block";
+            } else if (page==1){
+                document.getElementById("btn2").style.display="block";
+                document.getElementById("btn3").style.display="block";
+            } else if (page==2) {
+                document.getElementById("btn4").style.display="block";
+            }
         }
     </script>
 </body>
+
 </html>
