@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import productsData from "../data/productData"
-import { CartContext } from "../../0527-useReducer/store";
+import { CartContext } from "../store";
 
 export default function Products() {
     const [state, dispatch] = useContext(CartContext);
@@ -14,14 +14,11 @@ export default function Products() {
                         return (
                             <div className="col" key={item.id}>
                                 <div className="card">
-                                    {/* 圖片來源請自行到產品資料檔複製 */}
-                                    <img src={item.img}
-                                        className="card-img-top"
-                                        alt="..." />
+                                    <img src={item.img} className="card-img-top" alt={item.title} />
                                     <div className="card-body">
                                         <h6 className="card-title">
                                             {item.title}
-                                            <span className="float-end">NT${item.price}</span>
+                                            <span className="float-end">NT ${item.price}</span>
                                         </h6>
                                         <button
                                             type="button"
@@ -33,7 +30,7 @@ export default function Products() {
                                                         ...item,
                                                         quantity: 1,
                                                     },
-                                                })
+                                                });
                                             }}
                                         >
                                             加入購物車

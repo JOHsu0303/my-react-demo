@@ -30,8 +30,8 @@ function App() {
                     };
 
                 case 'CHANGE_CART_QUANTITY':
-                        cartList[index].quantity = action.payload.quantity;
-                
+                    cartList[index].quantity = action.payload.quantity;
+
                     return {
                         ...state,
                         cartList,
@@ -39,20 +39,23 @@ function App() {
                     };
 
                 case 'REMOVE_CART_ITEM':
-                        cartList.splice(index, 1);
-                
+                    cartList.splice(index, 1);
+
                     return {
                         ...state,
                         cartList,
                         total: calculateTotalPrice(cartList),
                     };
+
+                    default:
+                        return state;
             }
         },
         {
             cartList: [],
         },
     );
-    
+
     return (
         <CartContext.Provider value={cartReducer}>
             {/* 導覽列（navbar） */}
@@ -73,4 +76,10 @@ function App() {
         </CartContext.Provider>
     );
 }
-// export default App
+export default App;
+
+function calculateTotalPrice(cartList) {
+    return cartList
+        .map((item) => item.quantity * item.price)
+        .reduce((a, b) => a + b, 0);
+}
